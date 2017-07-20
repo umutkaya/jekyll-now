@@ -1,88 +1,159 @@
+# Welcome to Jekyll!
 #
-# This file contains configuration flags to customize your site
-#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
 
-# Name of your site (displayed in the header)
-name: Umut
-
-# Short bio or description (displayed in the header)
-description: Jekyll sample
-
-# URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: https://raw.githubusercontent.com/barryclark/jekyll-now/master/images/jekyll-logo.png
-
-#
-# Flags below are optional
-#
-
-# Includes an icon in the footer for each username you enter
-footer-links:
-  dribbble:
-  email:
-  facebook:
-  flickr:
-  github: barryclark/jekyll-now
-  instagram:
-  linkedin:
-  pinterest:
-  rss: # just type anything here for a working RSS icon
-  twitter: jekyllrb
-  stackoverflow: # your stackoverflow profile, e.g. "users/50476/bart-kiers"
-  youtube: # channel/<your_long_string> or user/<user-name>
-  googleplus: # anything in your profile username that comes after plus.google.com/
-
-
-# Enter your Disqus shortname (not your username) to enable commenting on posts
-# You can find your shortname on the Settings page of your Disqus account
-disqus:
-
-# Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
-google_analytics:
-
-# Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
-# Used for Sitemap.xml and your RSS feed
+# Site settings
+title: U.S. Indicators For The Sustainable Development Goals
+description: Data Platform Prototype
+baseurl: "/sdg-indicators" # the subpath of your site, e.g. /blog
 url: http://umutkaya.github.io
+data_dir: data
 
-# If you're hosting your site at a Project repository on GitHub pages
-# (http://yourusername.github.io/repository-name)
-# and NOT your User repository (http://yourusername.github.io)
-# then add in the baseurl here, like this: "/repository-name"
-baseurl: ""
+#Github Repo
+repo_name: sdg-indicators
+branch: gh-pages
+org_name: GSA
 
-#
-# !! You don't need to change any of the configuration flags below !!
-#
+# Build settings
+markdown: kramdown
 
-permalink: /:title/
+# Pages
+collections:
+  pages:
+    output: true
+    permalink: /:path/
+  indicators:
+    output: true
+  goals:
+    output: true
+  translations:
+    output: false
 
-# The release of Jekyll Now that you're using
-version: v1.2.0
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+    values:
+      lang: en
 
-# Jekyll 3 now only supports Kramdown for Markdown
-kramdown:
-  # Use GitHub flavored markdown, including triple backtick fenced code blocks
-  input: GFM
-  # Jekyll 3 and GitHub Pages now only support rouge for syntax highlighting
-  syntax_highlighter: rouge
-  syntax_highlighter_opts:
-    # Use existing pygments syntax highlighting css
-    css_class: 'highlight'
+analytics:
+  ga_prod: 'UA-42145528-4'
 
-# Set the Sass partials directory, as we're using @imports
-sass:
-  style: :expanded # You might prefer to minify using :compressed
-
-# Use the following plug-ins
-gems:
-  - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
-  - jekyll-feed # Create an Atom feed using the official Jekyll feed gem
-
-# Exclude these files from your production _site
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - LICENSE
-  - README.md
-  - CNAME
-
-encoding: utf-8
+# Prose configuration
+prose: 
+  ignore: ['/assets', '/_includes', '/_layouts', '/scripts', '/sass' ]
+  metadata:
+    _indicators:
+      - name: "indicator_name"
+        field: 
+            element: text
+            label: "SDG Indicator Name"
+            scope: global  
+      - name: "target"
+        field: 
+            element: text
+            label: "SDG Target Addressed"
+            scope: global
+      - name: "indicator_definition"
+        field: 
+            element: textarea
+            label: "Definition of SDG Indicator"
+            scope: global
+      - name: "method_of_computation"
+        field: 
+            element: textarea
+            label: "Method of computation for global SDG indicator"
+            scope: global
+      - name: "un_designated_tier"
+        field: 
+            element: text
+            label: "UN Designated Tier"
+            scope: global
+      - name: "un_custodial_agency"
+        field: 
+            element: text
+            label: "UN Custodial Agency"
+            scope: global
+      - name: "graph_title"
+        field: 
+            element: text
+            label: "Graph Title"  
+      - name: "actual_indicator_available"
+        field: 
+            element: text
+            label: "Actual indicator available"  
+      - name: "actual_indicator_available_description"
+        field: 
+            element: textarea
+            label: "Description of actual indicator available"  
+      - name: "us_method_of_computation"
+        field: 
+            element: textarea
+            label: "Method of computation"     
+      - name: "comments_and_limitations"
+        field: 
+            element: textarea
+            label: "Comments and limitations"  
+      - name: "periodicity"
+        field: 
+            element: text
+            label: "Periodicity"  
+      - name: "time_period"
+        field: 
+            element: text
+            label: "Time Period"  
+      - name: "unit_of_measure"
+        field: 
+            element: text
+            label: "Unit of measure"  
+      - name: "disaggregation_categories"
+        field: 
+            element: text
+            label: "Disaggregation #1 (Industry or social categories)"  
+      - name: "disaggregation_geography"
+        field: 
+            element: text
+            label: "Disaggregation #2 (Geographical coverage)"  
+      - name: "date_of_national_source_publication"
+        field: 
+            element: text
+            label: "Date of public data release from National source"  
+            placeholder: "MONTH YEAR"
+      - name: "date_metadata_updated"
+        field: 
+            element: text
+            label: "Date of last Update of This Page"  
+            placeholder: "MONTH YEAR"
+      - name: "scheduled_update_by_national_source"
+        field: 
+            element: text
+            label: "Scheduled Update by National source"  
+            placeholder: "MONTH/YEAR (Next Agency Release)"
+      - name: "scheduled_update_by_SDG_team"
+        field: 
+            element: text
+            label: "Scheduled Update by SDG Team"  
+            placeholder: "MONTH/YEAR (NRP Database)"
+      - name: "source_agency_staff_name"
+        field: 
+            element: text
+            label: "Data Source1 (Agency STAFF NAME)"  
+      - name: "source_agency_staff_email"
+        field: 
+            element: text
+            label: "Data Source2 (Staff E-MAIL)"  
+      - name: "source_agency_survey_dataset"
+        field: 
+            element: text
+            label: "Data Source3 (Agency/Survey/Dataset name)"  
+      - name: "source_url"
+        field: 
+            element: text
+            label: "Indicator web address (closest to data provided)"   
+      - name: "international_and_national_references"
+        field: 
+            element: text
+            label: "International and National References"
